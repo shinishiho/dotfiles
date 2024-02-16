@@ -1,0 +1,7 @@
+[arch]
+iwd
+modemmanager
+blueman
+bluez
+bluez-utils
+wpa_supplicant
