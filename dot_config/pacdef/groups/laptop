@@ -1,5 +1,8 @@
 [arch]
+asus-fan-control
 brightnessctl
 fprintd
 macchanger
 linux-zen
+waydroid-git
+waydroid-script-git

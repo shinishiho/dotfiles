@@ -18,6 +18,7 @@ kitty
 kvantum
 network-manager-applet
 nwg-look
+obsidian
 oh-my-zsh-git
 openssh
 pamixer
@@ -44,9 +45,12 @@ slurp
 swappy
 swaylock-effects-git
 swww
-thorium-browser
+thorium-browser-bin
+tmux
+visual-studio-code-bin
 waybar
 wireplumber
 wlogout
 xdg-desktop-portal-hyprland
+zoxide
 zsh-theme-powerlevel10k
