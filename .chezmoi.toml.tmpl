@@ -3,3 +3,6 @@
 encryption = "gpg"
 [gpg]
     recipient = "nakxkri@shinishiho.cyou"
+[merge]
+    command = "nvim"
+    args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
