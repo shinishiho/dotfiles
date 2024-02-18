@@ -1,6 +1,6 @@
 # Path variables.
 ZSH=/usr/share/oh-my-zsh/
-GYATE=~/.config/kitty/gyate/
+GYATE=${XDG_CONFIG_HOME:-$HOME/.config}/kitty/gyate/
 
 # Path to powerlevel10k theme
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme

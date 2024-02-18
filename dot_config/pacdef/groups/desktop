@@ -3,11 +3,15 @@ alsa-firmware
 alsa-plugins
 alsa-utils
 btop
+bun-bin
 cava
 cliphist
+cowsay
 dolphin
+dotacat
 dunst
 eza
+fortune-mod-archlinux
 grimblast-git
 gst-plugin-pipewire
 hyprdots-ctl
@@ -16,7 +20,9 @@ hyprpicker-git
 kde-cli-tools
 kitty
 kvantum
+lazygit
 network-manager-applet
+nvm
 nwg-look
 obsidian
 oh-my-zsh-git
@@ -29,7 +35,7 @@ pipewire-pulse
 pokemon-colorscripts-git
 polkit-kde-agent
 python-capng
-python-pyamdgpuinfo
+python-pip
 python-pyqt5
 qt5-graphicaleffects
 qt5-imageformats
