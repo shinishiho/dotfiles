@@ -21,6 +21,8 @@ kde-cli-tools
 kitty
 kvantum
 lazygit
+mpv
+mpv-mpris
 network-manager-applet
 nvm
 nwg-look
@@ -32,6 +34,7 @@ pavucontrol
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
+plover
 pokemon-colorscripts-git
 polkit-kde-agent
 python-capng
@@ -58,5 +61,8 @@ waybar
 wireplumber
 wlogout
 xdg-desktop-portal-hyprland
+youtube-tui-git
+yt-dlp
+zathura
 zoxide
 zsh-theme-powerlevel10k

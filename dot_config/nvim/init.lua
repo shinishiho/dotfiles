@@ -26,7 +26,8 @@ local plugins = {
             local configs = require("nvim-treesitter.configs")
 
             configs.setup({
-                ensure_installed = { "c", "lua", "javascript", "typescript", "rust", "python", "html" },
+                ensure_installed = { "c", "lua", "javascript", "typescript",
+                    "rust", "python", "html", "latex"},
                 sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = true },
@@ -41,8 +42,36 @@ local plugins = {
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
     {'neovim/nvim-lspconfig'},
     {'hrsh7th/cmp-nvim-lsp'},
-    {'hrsh7th/nvim-cmp'},
+    {
+        'hrsh7th/nvim-cmp',
+        config = function ()
+            require'cmp'.setup {
+                snippet = {
+                    expand = function(args)
+                        require'luasnip'.lsp_expand(args.body)
+                    end
+                },
+
+                sources = {
+                    { name = 'luasnip' },
+                    { name = 'copilot' },
+                    -- more sources
+                },
+            }
+        end
+    },
     {'L3MON4D3/LuaSnip'},
+    {'lervag/vimtex'},
+    {'saadparwaiz1/cmp_luasnip'},
+    {'github/copilot.vim'},
+    {
+        "folke/zen-mode.nvim",
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+    }
 }
 local opts = {}
 

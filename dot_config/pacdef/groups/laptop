@@ -1,5 +1,6 @@
 [arch]
 asus-fan-control
+bat-asus-battery-bin
 brightnessctl
 fprintd
 macchanger
