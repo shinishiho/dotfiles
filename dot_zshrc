@@ -69,6 +69,8 @@ alias lspkg='$aurhelper -Qs' # list installed package
 alias pcache='$aurhelper -Sc' # remove unused cache
 alias sudo='sudo ' # always use sudo
 alias cz='chezmoi' # chezmoi
+alias clr='clear' # clear
+alias f='fuck'
 
 # Handy change dir shortcuts
 alias ..='cd ..'
