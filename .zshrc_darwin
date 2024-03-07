@@ -42,6 +42,8 @@ alias ssh='kitten ssh'
 
 eval "$(zoxide init --cmd cd zsh)"
 
-fortune | cowsay -f $GYATE/blank.cow -W 80 | lolcat && kitty +kitten icat --align left \
-"$GYATE$(eza -I blank.cow $GYATE | sort -R | tail -1)"
+if [ -z "$SSH_CLIENT" ] || [ -z "$SSH_TTY" ]; then
+    fortune | cowsay -f $GYATE/blank.cow -W 80 | lolcat && kitty +kitten icat --align left \
+        "$GYATE$(eza -I blank.cow $GYATE | sort -R | tail -1)"
+fi
 printf '\033]2;%s\033\\' $USER@$HOST/$(uname -s)
