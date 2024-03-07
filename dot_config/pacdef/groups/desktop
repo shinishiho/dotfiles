@@ -23,6 +23,7 @@ kitty
 kvantum
 lazygit
 latexrun-git
+moonlight-qt-git
 mpv
 mpv-mpris
 network-manager-applet
@@ -59,9 +60,11 @@ slurp
 swappy
 swaylock-effects-git
 swww
+thefuck
 telegram-desktop
 texlive-latex
 tmux
+tmux-plugin-manager
 uxplay-git
 visual-studio-code-bin
 waybar
@@ -73,5 +76,6 @@ youtube-tui-git
 yt-dlp
 zathura
 zathura-pdf-mupdf
+zerotier-one
 zoxide
 zsh-theme-powerlevel10k
