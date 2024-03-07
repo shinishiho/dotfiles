@@ -1,0 +1,47 @@
+# Oh-my-zsh
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+plugins=(git sudo) 
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# A bunch of plugins
+source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+GYATE=${XDG_CONFIG_HOME:-$HOME/.config}/kitty/gyate/
+
+# Aliases
+alias ls='eza -1   --icons=auto' # short list
+alias  l='eza -lh  --icons=auto' # long list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias bbic="brew update &&\
+    brew bundle install --cleanup --file=~/.config/Brewfile --no-lock &&\
+    brew upgrade"
+alias bedit="chezmoi ~/.config/Brewfile || chezmoi apply"
+alias in="brew install"
+alias sudo='sudo ' # always use sudo
+alias cz='chezmoi' # chezmoi
+alias clr='clear' # clear
+alias f='fuck'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+alias mkdir='mkdir -p'
+
+alias ssh='kitten ssh'
+
+eval "$(zoxide init --cmd cd zsh)"
+
+fortune | cowsay -f $GYATE/blank.cow -W 80 | lolcat && kitty +kitten icat --align left \
+"$GYATE$(eza -I blank.cow $GYATE | sort -R | tail -1)"
+printf '\033]2;%s\033\\' $USER@$HOST/$(uname -s)
