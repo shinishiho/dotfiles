@@ -57,8 +57,8 @@ function v {
 }
 
 # Helpful aliases
-alias ls='eza -1   --icons=auto' # short list
 alias  l='eza -lh  --icons=auto' # long list
+alias ls='eza -1   --icons=auto' # short list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
 alias psy='pacdef p sy' # sync package list
@@ -96,3 +96,5 @@ eval "$(zoxide init --cmd cd zsh)"
 fortune | cowsay -f $GYATE/blank.cow -W 80 | dotacat && kitty +kitten icat --align left \
 "$GYATE$(eza -I blank.cow $GYATE | sort -R | tail -1)"
 printf '\033]2;%s\033\\' $USER@$HOST/$(uname -s)
+
+eval $(thefuck --alias)
