@@ -20,10 +20,10 @@ alias ls='eza -1   --icons=auto' # short list
 alias  l='eza -lh  --icons=auto' # long list
 alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
 alias ld='eza -lhD --icons=auto' # long list dirs
-alias bbic="brew update &&\
+alias psy="brew update &&\
     brew bundle install --cleanup --file=~/.config/Brewfile --no-lock &&\
     brew upgrade"
-alias bedit="chezmoi ~/.config/Brewfile || chezmoi apply"
+alias pe="chezmoi edit ~/.config/Brewfile \; chezmoi apply"
 alias in="brew install"
 alias sudo='sudo ' # always use sudo
 alias cz='chezmoi' # chezmoi
