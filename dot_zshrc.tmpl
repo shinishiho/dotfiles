@@ -37,9 +37,9 @@ alias lspkg='$aurhelper -Qs' # list installed package
 function in {
     local pkg="$1"
     if pacman -Syi "$pkg" &>/dev/null ; then
-        sudo pacman -S "$pkg"
+        sudo pacman -Sy "$pkg"
     else 
-        "$aurhelper" -S "$pkg"
+        "$aurhelper" -Sy "$pkg"
     fi
 }
 {{ end }}
@@ -54,11 +54,6 @@ source $ZSH/oh-my-zsh.sh
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # Aliases
 alias ls='eza -1   --icons=auto' # short list
@@ -78,6 +73,8 @@ alias .5='cd ../../../../..'
 
 alias mkdir='mkdir -p'
 #alias ssh='kitten ssh'
+
+alias ai='gh copilot suggest'
 
 function v {
     local file="$1"
