@@ -19,6 +19,7 @@ export USR_SHARE="/usr/share"
 export ZSH="$USR_SHARE/oh-my-zsh"
 
 plugins=(git sudo zsh-256color zsh-autosuggestions zsh-syntax-highlighting)
+source $USR_SHARE/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # Detect the AUR wrapper
 if pacman -Qi yay &>/dev/null ; then
@@ -46,7 +47,6 @@ function in {
 
 GYATE=${XDG_CONFIG_HOME:-$HOME/.config}/kitty/gyate/
 
-source $USR_SHARE/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 

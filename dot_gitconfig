@@ -1,3 +1,7 @@
 [user]
 	name = ShiniShiho
 	email = nakxkri@shinishiho.cyou
+[safe]
+	directory = /Users/shinishiho/Cloud-Drive/[0] Notebook/W's notes
+[credential]
+	helper = osxkeychain
