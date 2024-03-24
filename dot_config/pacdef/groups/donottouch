@@ -14,7 +14,7 @@ linux-firmware
 linux-headers
 mdadm
 ntfs-3g
-pacdef-git
+pacdef
 reiserfsprogs
 s-nail
 sysfsutils

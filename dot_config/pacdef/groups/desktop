@@ -2,6 +2,7 @@
 alsa-firmware
 alsa-plugins
 alsa-utils
+ani-cli
 btop
 bun-bin
 brave-bin
@@ -20,6 +21,7 @@ hyprland
 hyprpicker-git
 kde-cli-tools
 kitty
+ktorrent
 kvantum
 lazygit
 latexrun-git
@@ -33,6 +35,7 @@ obsidian
 oh-my-zsh-git
 openssh
 pamixer
+parsec-bin
 pavucontrol
 pipewire-alsa
 pipewire-jack
@@ -62,7 +65,7 @@ swaylock-effects-git
 swww
 thefuck
 telegram-desktop
-texlive-latex
+texlive-full
 tmux
 tmux-plugin-manager
 uxplay-git
@@ -72,10 +75,12 @@ wireplumber
 wlogout
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
+yazi
 youtube-tui-git
 yt-dlp
 zathura
 zathura-pdf-mupdf
 zerotier-one
+zoom
 zoxide
 zsh-theme-powerlevel10k

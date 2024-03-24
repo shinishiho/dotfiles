@@ -1,30 +1,36 @@
 return {
-    "L3MON4D3/LuaSnip",
-    version = "v2.*",
-    build = "make install_jsregexp",
-    dependencies = {
-        "rafamadriz/friendly-snippets",
-        "benfowler/telescope-luasnip.nvim",
-    },
+    --{ import = "plugins.snippets.tex" },
+    {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        build = "make install_jsregexp",
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+            "benfowler/telescope-luasnip.nvim",
+        },
 
-    config = function(_, opts)
-        if opts then require("luasnip").config.setup(opts) end
-        vim.tbl_map(
-        function(type) require("luasnip.loaders.from_" .. type).lazy_load() end,
-        { "vscode", "snipmate", "lua" }
-        )
-        require("luasnip").filetype_extend("typescript", { "tsdoc" })
-        require("luasnip").filetype_extend("javascript", { "jsdoc" })
-        require("luasnip").filetype_extend("lua", { "luadoc" })
-        require("luasnip").filetype_extend("python", { "pydoc" })
-        require("luasnip").filetype_extend("rust", { "rustdoc" })
-        require("luasnip").filetype_extend("cs", { "csharpdoc" })
-        require("luasnip").filetype_extend("java", { "javadoc" })
-        require("luasnip").filetype_extend("c", { "cdoc" })
-        require("luasnip").filetype_extend("cpp", { "cppdoc" })
-        require("luasnip").filetype_extend("php", { "phpdoc" })
-        require("luasnip").filetype_extend("kotlin", { "kdoc" })
-        require("luasnip").filetype_extend("ruby", { "rdoc" })
-        require("luasnip").filetype_extend("sh", { "shelldoc" })
-    end,
+        config = function()
+            local ls = require("luasnip")
+            ls.config.set_config({
+                enable_autosnippets = true,
+            })
+            require("luasnip.loaders.from_vscode").load()
+            require("luasnip.loaders.from_snipmate").load()
+            require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/lua/plugins/snippets"})
+
+            ls.filetype_extend("typescript", { "tsdoc" })
+            ls.filetype_extend("javascript", { "jsdoc" })
+            ls.filetype_extend("lua", { "luadoc" })
+            ls.filetype_extend("python", { "pydoc" })
+            ls.filetype_extend("rust", { "rustdoc" })
+            ls.filetype_extend("cs", { "csharpdoc" })
+            ls.filetype_extend("java", { "javadoc" })
+            ls.filetype_extend("c", { "cdoc" })
+            ls.filetype_extend("cpp", { "cppdoc" })
+            ls.filetype_extend("php", { "phpdoc" })
+            ls.filetype_extend("kotlin", { "kdoc" })
+            ls.filetype_extend("ruby", { "rdoc" })
+            ls.filetype_extend("sh", { "shelldoc" })
+        end,
+    },
 }

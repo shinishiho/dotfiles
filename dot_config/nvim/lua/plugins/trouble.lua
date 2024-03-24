@@ -8,7 +8,7 @@ return {
         {
             "<leader>tt",
             function()
-                require("trouble").toggle()
+                require("trouble").toggle("workspace_diagnostics")
             end,
             desc = "Toggle trouble",
         },

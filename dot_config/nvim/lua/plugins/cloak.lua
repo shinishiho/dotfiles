@@ -4,14 +4,15 @@ return {
         enable = true,
         cloak_character = "*",
         hightlight_group = "Comment",
+        cloak_telescope = false,
         patterns = {
             {
                 file_pattern = {
-                    ".env",
+                    ".env*",
                     "wrangler.toml",
                     ".dev.vars",
                 },
-                cloak_pattern = ".+",
+                cloak_pattern = "=.+",
             },
         },
     },
