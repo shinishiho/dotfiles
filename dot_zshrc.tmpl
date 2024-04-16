@@ -17,6 +17,7 @@ alias in="brew install"
 {{ if eq .chezmoi.os "linux" }}
 export USR_SHARE="/usr/share"
 export ZSH="$USR_SHARE/oh-my-zsh"
+export PATH="$PATH:$HOME/.bun/bin"
 
 plugins=(git sudo zsh-256color zsh-autosuggestions zsh-syntax-highlighting)
 source $USR_SHARE/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
