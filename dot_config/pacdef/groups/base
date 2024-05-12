@@ -3,12 +3,15 @@ base
 base-devel
 bind
 btrfs-progs
+chaotic-keyring
+chaotic-mirrorlist
 chezmoi
 cryptsetup
 device-mapper
 dhclient
 diffutils
 dnsmasq
+dns-over-https
 downgrade
 dracut
 efibootmgr
@@ -28,7 +31,7 @@ lvm2
 man-db
 man-pages
 nano
-neofetch
+fastfetch
 neovim
 netctl
 networkmanager

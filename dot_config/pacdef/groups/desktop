@@ -28,6 +28,7 @@ kvantum-qt5
 lazygit
 latexrun-git
 libnotify
+lutris
 mpv
 mpv-mpris
 network-manager-applet
@@ -62,6 +63,7 @@ qt6ct
 rofi-lbonn-wayland-git
 sddm-git
 slurp
+steam
 syncthing
 swappy
 swaylock-effects-git
@@ -75,6 +77,7 @@ ttf-twemoji-color
 waybar
 wireplumber
 wlogout
+wtype
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 yazi
