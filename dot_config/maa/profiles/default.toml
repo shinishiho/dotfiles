@@ -1,0 +1,9 @@
+[connection]
+preset = "PlayCover"
+config = "CompatMac"
+
+[resource]
+global_resource = "YoStarEN"
+
+[static_options]
+cpu_ocr = true

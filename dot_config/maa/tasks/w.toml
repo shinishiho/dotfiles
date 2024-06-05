@@ -1,0 +1,37 @@
+[[tasks]]
+type = "StartUp"
+params = { client_type = "YoStarEN", start_game_enabled = true }
+
+[[tasks]]
+type = "Recruit"
+
+[tasks.params]
+refresh = true
+times = 4
+expedite = false
+select = [4, 5]
+confirm = [3, 4, 5]
+skip_robot = false
+recruitment_time = { '3' = 460 }
+
+[[tasks]]
+type = "Mall"
+
+[[tasks.variants]]
+condition = { type = "Time", start = "18:00:00" }
+
+[tasks.params]
+shopping = true
+credit_fight = true
+buy_first = ["招聘许可"]
+blacklist = ["碳", "碳素", "家具零件", "加急许可"]
+
+[[tasks]]
+type = "Award"
+
+[tasks.params]
+award = true
+mail = true
+
+[[tasks]]
+type = "CloseDown"

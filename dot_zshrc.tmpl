@@ -11,7 +11,7 @@ source $USR_SHARE/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 alias psy="brew update &&\
     brew bundle install --cleanup --file=~/.config/Brewfile --no-lock &&\
     brew upgrade"
-alias pe="nvim .config/Brewfile && chezmoi re-add"
+alias pe="nvim ~/.config/Brewfile && chezmoi re-add"
 alias in="brew install"
 {{ end }}
 {{ if eq .chezmoi.os "linux" }}
