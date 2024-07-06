@@ -1,0 +1,145 @@
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=1000
+setopt HIST_IGNORE_ALL_DUPS
+setopt SHARE_HISTORY
+
+SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+WORDCHARS=${WORDCHARS//[\/]}
+
+# Disable automatic widget re-binding on each precmd. This can be set when
+# zsh-users/zsh-autosuggestions is the last module in your ~/.zimrc.
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+
+# Customize the style that the suggestions are shown with.
+# See https://github.com/zsh-users/zsh-autosuggestions/blob/master/README.md#suggestion-highlight-style
+#ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+
+# Customize the main highlighter styles.
+# See https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/docs/highlighters/main.md#how-to-tweak-it
+#typeset -A ZSH_HIGHLIGHT_STYLES
+#ZSH_HIGHLIGHT_STYLES[comment]='fg=242'
+
+# ------------------
+# Initialize modules
+# ------------------
+
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+# Download zimfw plugin manager if missing.
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  if (( ${+commands[curl]} )); then
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  else
+    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh \
+        https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  fi
+fi
+# Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  source ${ZIM_HOME}/zimfw.zsh init -q
+fi
+# Initialize modules.
+source ${ZIM_HOME}/init.zsh
+
+zmodload -F zsh/terminfo +p:terminfo
+# Bind ^[[A/^[[B manually so up/down works both before and after zle-line-init
+for key ('^[[A' '^P' ${terminfo[kcuu1]}) bindkey ${key} history-substring-search-up
+for key ('^[[B' '^N' ${terminfo[kcud1]}) bindkey ${key} history-substring-search-down
+for key ('k') bindkey -M vicmd ${key} history-substring-search-up
+for key ('j') bindkey -M vicmd ${key} history-substring-search-down
+unset key
+# }}} End configuration added by Zim install
+
+export PATH="$PATH:$HOME/.bun/bin"
+
+# Aliases
+alias psy='pacdef p sy && pacdef p c && yay -Sc' # sync package list
+alias pe='nvim .config/pacdef/ && chezmoi re-add'
+alias pu='yay -Syu && pacdef p u' # list unmanaged packages
+alias pc='yay -Qtdq | yay -Rns -' # remove unused packages, also try > yay -Qqd | yay -Rsu --print -
+alias lspkg='yay -Qs' # list installed package
+function in {
+    local pkg="$1"
+    if pacman -Syi "$pkg" &>/dev/null ; then
+        sudo pacman -Sy "$pkg"
+    else 
+        "yay" -S "$pkg" --noconfirm
+    fi
+}
+
+GYATE=${XDG_CONFIG_HOME:-$HOME/.config}/kitty/gyate/
+
+alias ls='eza -1   --icons=auto' # short list
+alias  l='eza -lh  --icons=auto' # long list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto' # long list dirs
+alias sudo='sudo ' # always use sudo
+alias cz='chezmoi' # chezmoi
+alias clr='clear' # clear
+alias f='fuck'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+alias mkdir='mkdir -p'
+#alias ssh='kitten ssh'
+
+alias ai='gh copilot suggest'
+
+function v {
+    local file="$1"
+        nvim "$file"
+        if chezmoi managed | grep -q "$file" ; then
+            chezmoi re-add
+                fi
+}
+function nvm {
+    unset -f nvm
+        export NVM_DIR=~/.nvm
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+        nvm "$@"
+}
+function node {
+    unset -f node
+        export NVM_DIR=~/.nvm
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+        node "$@"
+}
+function npm {
+    unset -f npm
+        export NVM_DIR=~/.nvm
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+        npm "$@"
+}
+
+if [ -z "$SSH_CLIENT" ] || [ -z "$SSH_TTY" ]; then
+    kitty +kitten icat --place 10x10@0x0 "$GYATE$(eza -I blank.cow $GYATE | sort -R | tail -1)"
+    fun_output=$(fortune | cowthink -W 50 | dotacat | sed 's/^/           /')
+
+    echo "$fun_output"
+
+    line_count=$(echo "$fun_output" | wc -l)
+
+    if [ "$line_count" -gt 6 ]; then
+        additional_images=$(((line_count - 6) / 5))
+
+        for ((i=1; i<=additional_images; i++)); do
+            kitty +kitten icat --place 10x10@0x$((i * 5)) \
+                "$GYATE$(eza -I blank.cow $GYATE | sort -R | tail -1)"
+        done
+
+        tput cup $((line_count - 2)) 0
+    fi
+fi
+printf '\033]2;%s\033\\' $USER@$HOST/$(uname -s)
+
+eval "$(zoxide init --cmd cd zsh)"
+eval "$(thefuck --alias)"
+eval "$(starship init zsh)"
+setopt correct
